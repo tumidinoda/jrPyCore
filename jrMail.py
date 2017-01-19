@@ -5,7 +5,6 @@ import smtplib
 from email.mime.text import MIMEText
 
 
-# noinspection PyPep8Naming
 class JrMail:
     # ------------------------------------------------------------------------------------------------------------------
     def __init__(self):
@@ -18,8 +17,8 @@ class JrMail:
         self.__mail_user, self.__smtp_server, self.__mail_pw = secrets.authenticators('Mailprovider')
 
     # ------------------------------------------------------------------------------------------------------------------
-    def sendMail(self, subject, inhalt):
-        msg = MIMEText(inhalt, 'plain', 'utf-8')
+    def send(self, subject, content):
+        msg = MIMEText(content, 'plain', 'utf-8')
         msg['From'] = self.__mail_from
         msg['To'] = self.__mail_to
         msg['Subject'] = subject
