@@ -7,7 +7,7 @@ from email.mime.text import MIMEText
 
 # noinspection PyPep8Naming
 class JrMail:
-    # ------------------------------------------------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------
     def __init__(self):
         self.myLogger = logging.getLogger('jrWetterstationLogger')
         self.myLogger.debug('Mail constructor')
@@ -30,6 +30,7 @@ class JrMail:
         server.sendmail(self.__mail_from, self.__mail_to, msg.as_string())
         server.quit()
         
-
+        
 myMail=JrMail()
 myMail.sendMail('subject','inhalt')
+print('JRmail() Test finished')
