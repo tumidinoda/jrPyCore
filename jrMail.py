@@ -30,10 +30,16 @@ class JrMail:
         server.sendmail(self.__mail_from, self.__mail_to, msg.as_string())
         server.quit()
         
+  
+def main():
+    myMail=JrMail()
+		#test only subject mail
+		myMail.sendMail('Testsubject')
+		#test subject and content mail
+		myMail.sendMail("Testsubject 2", "Testcontent")
+		print('JRmail() Tests finished')
+
+
+__name__ == '__main__' and main()
         
-myMail=JrMail()
-#test only subject mail
-myMail.sendMail('Testsubject')
-#test subject and content mail
-myMail.sendMail("Testsubject 2", "Testcontent")
-print('JRmail() Tests finished')
+
