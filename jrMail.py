@@ -1,25 +1,23 @@
-# -*- encoding: utf-8 -*-
 import logging
 import netrc
 import smtplib
 from email.mime.text import MIMEText
 
 
-# noinspection PyPep8Naming
 class JrMail:
     # -----------------------------------------------------------------------------------------------------
-    def __init__(self):
+    def __init__(self, netrc_key='Mailprovider'):
         self.myLogger = logging.getLogger('jrWetterstationLogger')
         self.myLogger.debug('Mail constructor')
 
         self.__mail_from = 'SeyringWetter@a1.net'
         self.__mail_to = 'robert.jonas@gmx.at'
-        secrets = netrc.netrc()
-        self.__mail_user, self.__smtp_server, self.__mail_pw = secrets.authenticators('Mailprovider')
+        secrets = netrc.netrc('.myNetrc')
+        self.__mail_user, self.__smtp_server, self.__mail_pw = secrets.authenticators(netrc_key)
 
     # -----------------------------------------------------------------------------------------------------
-    def sendMail(self, subject, inhalt=None):
-        msg = MIMEText(inhalt, 'plain', 'utf-8')
+    def send(self, subject, content=None):
+        msg = MIMEText(content, 'plain', 'utf-8')
         msg['From'] = self.__mail_from
         msg['To'] = self.__mail_to
         msg['Subject'] = subject
@@ -29,17 +27,17 @@ class JrMail:
         server.login(self.__mail_user, self.__mail_pw)
         server.sendmail(self.__mail_from, self.__mail_to, msg.as_string())
         server.quit()
-        
-  
+
+
+# ---------------------------------------------------------------------------------------------------------
 def main():
-    myMail=JrMail()
-		#test only subject mail
-		myMail.sendMail('Testsubject')
-		#test subject and content mail
-		myMail.sendMail("Testsubject 2", "Testcontent")
-		print('JRmail() Tests finished')
+    # test subject only mail
+    my_mail = JrMail()
+    my_mail.send('Testsubject')
+    # test subject and content mail
+    my_mail.send("Testsubject 2", "Testcontent")
+    print('JRmail() Tests finished')
 
 
+# ---------------------------------------------------------------------------------------------------------
 __name__ == '__main__' and main()
-        
-
