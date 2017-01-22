@@ -29,3 +29,7 @@ class JrMail:
         server.login(self.__mail_user, self.__mail_pw)
         server.sendmail(self.__mail_from, self.__mail_to, msg.as_string())
         server.quit()
+        
+
+myMail=JrMail()
+myMail.sendMail('subject','inhalt')
