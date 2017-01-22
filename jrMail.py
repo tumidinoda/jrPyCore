@@ -17,8 +17,8 @@ class JrMail:
         secrets = netrc.netrc()
         self.__mail_user, self.__smtp_server, self.__mail_pw = secrets.authenticators('Mailprovider')
 
-    # ------------------------------------------------------------------------------------------------------------------
-    def sendMail(self, subject, inhalt):
+    # -----------------------------------------------------------------------------------------------------
+    def sendMail(self, subject, inhalt=None):
         msg = MIMEText(inhalt, 'plain', 'utf-8')
         msg['From'] = self.__mail_from
         msg['To'] = self.__mail_to
@@ -32,5 +32,8 @@ class JrMail:
         
         
 myMail=JrMail()
-myMail.sendMail('subject','inhalt')
-print('JRmail() Test finished')
+#test only subject mail
+myMail.sendMail('Testsubject')
+#test subject and content mail
+myMail.sendMail("Testsubject 2", "Testcontent")
+print('JRmail() Tests finished')
