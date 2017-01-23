@@ -6,7 +6,6 @@ import yaml
 
 # ---------------------------------------------------------------------------------------------------------
 class JrLogger:
-    # -----------------------------------------------------------------------------------------------------
     def config(self,
                module,
                level=logging.INFO,
@@ -28,7 +27,7 @@ class JrLogger:
 # ---------------------------------------------------------------------------------------------------------
 def main():
     # isome Test cases
-    myLogger = JrLogger().config('Test jrLogger',logging.WARNING)
+    myLogger = JrLogger().config('Test jrLogger', logging.WARNING)
     myLogger.debug('Hallo Debug')
     myLogger.info('Hallo Info')
     myLogger.warning('Hallo Warning')
