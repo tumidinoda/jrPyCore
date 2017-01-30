@@ -8,7 +8,7 @@ from jrPyCore.jrLogger import JrLogger
 class JrMail:
     # -----------------------------------------------------------------------------------------------------
     def __init__(self, netrc_key='Mailprovider'):
-        self.__mail_from = 'SeyringWetter@a1.net'
+        self.__mail_from = 'WetterSeyring@a1.net'
         self.__mail_to = 'robert.jonas@gmx.at'
         secrets = netrc.netrc('.myNetrc')
         self.__mail_user, self.__smtp_server, self.__mail_pw = secrets.authenticators(netrc_key)

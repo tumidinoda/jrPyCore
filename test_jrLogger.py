@@ -3,7 +3,9 @@ import unittest
 from os import environ
 from unittest import TestCase
 
-from jrLogger import JrLogger
+from jrPyCore.jrLogger import JrLogger
+
+import j
 
 
 # ---------------------------------------------------------------------------------------------------------
