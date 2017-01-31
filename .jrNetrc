@@ -1,0 +1,4 @@
+machine Mailprovider
+  account <account>
+  login <user>
+  password <pw>
