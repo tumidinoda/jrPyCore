@@ -5,8 +5,6 @@ from unittest import TestCase
 
 from jrPyCore.jrLogger import JrLogger
 
-import j
-
 
 # ---------------------------------------------------------------------------------------------------------
 class TestJrLogger(TestCase):
