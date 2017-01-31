@@ -26,12 +26,12 @@ class JrLogger:
 
 # ---------------------------------------------------------------------------------------------------------
 def main():
-    # isome Test cases
-    myLogger = JrLogger().config('Test jrLogger', logging.WARNING)
-    myLogger.debug('Hallo Debug')
-    myLogger.info('Hallo Info')
-    myLogger.warning('Hallo Warning')
-    myLogger.error('Hallo Error')
+    # some Test cases
+    my_logger = JrLogger().config('Test jrLogger', logging.WARNING)
+    my_logger.debug('Hallo Debug')
+    my_logger.info('Hallo Info')
+    my_logger.warning('Hallo Warning')
+    my_logger.error('Hallo Error')
     logging.critical('Hallo Critical')
     logging.exception('Hallo Error with traceback')
     logging.warning('Hallo Warning')
