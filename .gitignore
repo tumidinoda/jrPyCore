@@ -1,4 +1,11 @@
 tmp/
 .idea/
 *.pyc
-.myNetrc
+.jrNetrc
+__pycache__/
+test/jrLogger.log
+test/jrLogger.log.1
+test/jrLogger.log.2
+test/jrLogger.log.3
+test/jrLogger.log.4
+test/jrLogger.log.5
