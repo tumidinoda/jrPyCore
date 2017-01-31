@@ -1,4 +1,4 @@
 machine Mailprovider
-  account <account>
-  login <user>
-  password <pw>
+  account smtp.a1.net
+  login WetterSeyring@a1.net
+  password seyring
