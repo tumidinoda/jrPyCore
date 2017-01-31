@@ -9,7 +9,7 @@ class JrLogger:
     def config(self,
                module,
                level=logging.INFO,
-               file='jrLogger.yaml',
+               file='jrLogger.yml',
                env_key='LOG_CFG'
                ):
         env_file = os.getenv(env_key, None)

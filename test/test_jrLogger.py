@@ -1,9 +1,8 @@
-import logging
 import unittest
 from os import environ
 from unittest import TestCase
 
-from jrPyCore.jrLogger import JrLogger
+from jrLogger import JrLogger
 
 
 # ---------------------------------------------------------------------------------------------------------
@@ -19,7 +18,7 @@ class TestJrLogger(TestCase):
     myLogger.exception('Hallo Error with traceback')
 
     # logging based on config file options
-    environ['LOG_CFG'] = '../jrLogger.yaml'
+    environ['LOG_CFG'] = '../jrLogger.yml'
     myLogger = JrLogger().config(__name__)
     myLogger.debug('Hallo Debug')
     myLogger.info('Hallo Info')
@@ -28,9 +27,9 @@ class TestJrLogger(TestCase):
     myLogger.critical('Hallo Critical')
     myLogger.exception('Hallo Error with traceback')
 
-    #loop test for cyclic logging
+    # loop test for cyclic logging
     for i in range(400):
-        myLogger.info('Loggin Test line: '+str(i))
+        myLogger.info('Loggin Test line: ' + str(i))
 
 
 # ---------------------------------------------------------------------------------------------------------
