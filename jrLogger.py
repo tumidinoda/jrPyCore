@@ -6,12 +6,12 @@ import yaml
 
 # ---------------------------------------------------------------------------------------------------------
 class JrLogger:
-    def config(self,
-               module,
-               level=logging.INFO,
-               file='jrLogger.yml',
-               env_key='LOG_CFG'
-               ):
+    def setup(self,
+              module,
+              level=logging.INFO,
+              file='jrLogger.yml',
+              env_key='LOG_CFG'
+              ):
         env_file = os.getenv(env_key, None)
         if env_file:
             file = env_file
@@ -27,7 +27,7 @@ class JrLogger:
 # ---------------------------------------------------------------------------------------------------------
 def main():
     # some Test cases
-    my_logger = JrLogger().config('Test jrLogger', logging.WARNING)
+    my_logger = JrLogger().setup('Test jrLogger', logging.WARNING)
     my_logger.debug('Hallo Debug')
     my_logger.info('Hallo Info')
     my_logger.warning('Hallo Warning')

@@ -9,7 +9,7 @@ from jrLogger import JrLogger
 class TestJrLogger(TestCase):
     # logging based on default log-options
     environ['LOG_CFG'] = ''
-    myLogger = JrLogger().config(__name__)
+    myLogger = JrLogger().setup(__name__)
     myLogger.debug('Hallo Debug')
     myLogger.info('Hallo Info')
     myLogger.warning('Hallo Warning')
@@ -17,9 +17,9 @@ class TestJrLogger(TestCase):
     myLogger.critical('Hallo Critical')
     myLogger.exception('Hallo Error with traceback')
 
-    # logging based on config file options
+    # logging based on setup file options
     environ['LOG_CFG'] = '../jrLogger.yml'
-    myLogger = JrLogger().config(__name__)
+    myLogger = JrLogger().setup(__name__)
     myLogger.debug('Hallo Debug')
     myLogger.info('Hallo Info')
     myLogger.warning('Hallo Warning')

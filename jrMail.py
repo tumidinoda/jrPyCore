@@ -17,7 +17,7 @@ class JrMail:
             secrets = netrc.netrc(netrc_path)
 
         self.__mail_user, self.__smtp_server, self.__mail_pw = secrets.authenticators(netrc_key)
-        self.__logger = JrLogger().config(__name__)
+        self.__logger = JrLogger().setup(__name__)
 
     # -----------------------------------------------------------------------------------------------------
     def send(self, subject, content=None):
@@ -36,7 +36,7 @@ class JrMail:
 
 # ---------------------------------------------------------------------------------------------------------
 def main():
-    my_logger = JrLogger().config(__file__)
+    my_logger = JrLogger().setup(__file__)
     try:
         my_mail = JrMail()
         my_logger.info('JRmail() Tests started')
