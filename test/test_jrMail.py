@@ -1,5 +1,5 @@
-from jrLogger import JrLogger
-from jrMail import JrMail
+from jrPyCore.jrLogger import JrLogger
+from jrPyCore.jrMail import JrMail
 
 my_logger = JrLogger().config(__name__, file='../jrLogger.yml')
 try:

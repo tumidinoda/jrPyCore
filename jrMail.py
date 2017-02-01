@@ -2,7 +2,7 @@ import netrc
 import smtplib
 from email.mime.text import MIMEText
 
-from jrLogger import JrLogger
+from jrPyCore.jrLogger import JrLogger
 
 
 class JrMail:
