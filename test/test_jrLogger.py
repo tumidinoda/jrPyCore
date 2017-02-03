@@ -2,34 +2,34 @@ import unittest
 from os import environ
 from unittest import TestCase
 
-from jrLogger import JrLogger
+from jrPyCore.jrLogger import JrLogger
 
 
 # ---------------------------------------------------------------------------------------------------------
 class TestJrLogger(TestCase):
     # logging based on default log-options
     environ['LOG_CFG'] = ''
-    myLogger = JrLogger().setup(__name__)
-    myLogger.debug('Hallo Debug')
-    myLogger.info('Hallo Info')
-    myLogger.warning('Hallo Warning')
-    myLogger.error('Hallo Error')
-    myLogger.critical('Hallo Critical')
-    myLogger.exception('Hallo Error with traceback')
+    my_logger = JrLogger().setup(__name__)
+    my_logger.debug('Hallo Debug')
+    my_logger.info('Hallo Info')
+    my_logger.warning('Hallo Warning')
+    my_logger.error('Hallo Error')
+    my_logger.critical('Hallo Critical')
+    my_logger.exception('Hallo Error with traceback')
 
     # logging based on setup file options
     environ['LOG_CFG'] = '../jrLogger.yml'
-    myLogger = JrLogger().setup(__name__)
-    myLogger.debug('Hallo Debug')
-    myLogger.info('Hallo Info')
-    myLogger.warning('Hallo Warning')
-    myLogger.error('Hallo Error')
-    myLogger.critical('Hallo Critical')
-    myLogger.exception('Hallo Error with traceback')
+    my_logger = JrLogger().setup(__name__)
+    my_logger.debug('Hallo Debug')
+    my_logger.info('Hallo Info')
+    my_logger.warning('Hallo Warning')
+    my_logger.error('Hallo Error')
+    my_logger.critical('Hallo Critical')
+    my_logger.exception('Hallo Error with traceback')
 
     # loop test for cyclic logging
     for i in range(400):
-        myLogger.info('Loggin Test line: ' + str(i))
+        my_logger.info('Loggin Test line: ' + str(i))
 
 
 # ---------------------------------------------------------------------------------------------------------

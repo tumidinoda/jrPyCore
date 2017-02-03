@@ -21,13 +21,19 @@ class JrLogger:
             logging.config.dictConfig(config)
         else:
             logging.basicConfig(level=level)
+
+        if __name__ == '__main__':
+            module = os.path.basename(__file__)
+        else:
+            module = __name__
         return logging.getLogger(module)
 
 
 # ---------------------------------------------------------------------------------------------------------
 def main():
     # some Test cases
-    my_logger = JrLogger().setup('Test jrLogger', logging.WARNING)
+#    my_logger = JrLogger().setup('Test jrLogger', logging.WARNING)
+    my_logger = JrLogger().setup(__name__, logging.WARNING)
     my_logger.debug('Hallo Debug')
     my_logger.info('Hallo Info')
     my_logger.warning('Hallo Warning')
