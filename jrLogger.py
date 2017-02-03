@@ -32,7 +32,6 @@ class JrLogger:
             module = __name__
         return logging.getLogger(module)
 
-
 # ---------------------------------------------------------------------------------------------------------
 def main():
     # some Test cases
