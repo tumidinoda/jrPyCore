@@ -23,6 +23,7 @@ class JrLogger:
                 logging.config.dictConfig(__config)
             except (IOError,ValueError):
                 logging.basicConfig(level=level)
+                logging.error('Error during jrLogger setup')
         else:
             logging.basicConfig(level=level)
 
