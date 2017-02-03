@@ -1,5 +1,6 @@
 import logging.config
 import os
+import sys
 
 import yaml
 
@@ -21,13 +22,22 @@ class JrLogger:
             logging.config.dictConfig(config)
         else:
             logging.basicConfig(level=level)
+
+        if __name__ == '__main__':
+            # lock back one level in execution to get calling module name
+            frame = sys._getframe(1)
+            file_name = (frame.f_globals['__file__'])
+            module = os.path.basename(file_name)
+        else:
+            module = __name__
         return logging.getLogger(module)
 
 
 # ---------------------------------------------------------------------------------------------------------
 def main():
     # some Test cases
-    my_logger = JrLogger().setup('Test jrLogger', logging.WARNING)
+    #    my_logger = JrLogger().setup('Test jrLogger', logging.WARNING)
+    my_logger = JrLogger().setup(__name__, logging.WARNING)
     my_logger.debug('Hallo Debug')
     my_logger.info('Hallo Info')
     my_logger.warning('Hallo Warning')
