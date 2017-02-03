@@ -17,7 +17,7 @@ class JrLogger:
         if not __my_logfile:
             __my_logfile = logfile
         if os.path.exists(__my_logfile):
-            try
+            try:
                 with open(__my_logfile, 'rt') as f:
                     __config = yaml.safe_load(f.read())
                 logging.config.dictConfig(__config)
