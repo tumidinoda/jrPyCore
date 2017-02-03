@@ -23,14 +23,16 @@ class JrLogger:
         else:
             logging.basicConfig(level=level)
 
-        if __name__ == '__main__':
-            # lock back one level in execution to get calling module name
-            frame = sys._getframe(1)
-            file_name = (frame.f_globals['__file__'])
+        # lock back one level in execution to get calling module name
+        frame = sys._getframe(1)
+        module = frame.f_globals['__name__']
+        if module == '__main__':
+            # if name='__main__' then create module name out of filename
+            file_name = frame.f_globals['__file__']
             module = os.path.basename(file_name)
-        else:
-            module = __name__
+
         return logging.getLogger(module)
+
 
 # ---------------------------------------------------------------------------------------------------------
 def main():
