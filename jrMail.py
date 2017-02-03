@@ -9,6 +9,7 @@ class JrMail:
     # -----------------------------------------------------------------------------------------------------
     def __init__(self, netrc_path='.jrNetrc', netrc_key='Mailprovider', mail_from='WetterSeyring@a1.net',
                  mail_to='robert.jonas@gmx.at'):
+        self.__logger = JrLogger().get()
         self.__mail_from = mail_from
         self.__mail_to = mail_to
         try:  # first default .netrc and second local
@@ -17,7 +18,6 @@ class JrMail:
             secrets = netrc.netrc(netrc_path)
 
         self.__mail_user, self.__smtp_server, self.__mail_pw = secrets.authenticators(netrc_key)
-        self.__logger = JrLogger().setup(__name__)
 
     # -----------------------------------------------------------------------------------------------------
     def send(self, subject, content=None):
@@ -36,7 +36,7 @@ class JrMail:
 
 # ---------------------------------------------------------------------------------------------------------
 def main():
-    my_logger = JrLogger().setup(__file__)
+    my_logger = JrLogger().get()
     try:
         my_mail = JrMail()
         my_logger.info('JRmail() Tests started')

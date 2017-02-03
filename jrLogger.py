@@ -7,38 +7,42 @@ import yaml
 
 # ---------------------------------------------------------------------------------------------------------
 class JrLogger:
-    def setup(self,
-              module,
-              level=logging.INFO,
-              file='jrLogger.yml',
-              env_key='LOG_CFG'
-              ):
-        env_file = os.getenv(env_key, None)
-        if env_file:
-            file = env_file
-        if os.path.exists(file):
-            with open(file, 'rt') as f:
-                config = yaml.safe_load(f.read())
-            logging.config.dictConfig(config)
+    # -----------------------------------------------------------------------------------------------------
+    def __init__(self,
+                 level=logging.INFO,
+                 logfile='jrLogger.yml',
+                 env_key='LOG_CFG'
+                 ):
+        __my_logfile = os.getenv(env_key, None)
+        if not __my_logfile:
+            __my_logfile = logfile
+        if os.path.exists(__my_logfile):
+            with open(__my_logfile, 'rt') as f:
+                __config = yaml.safe_load(f.read())
+            logging.config.dictConfig(__config)
         else:
             logging.basicConfig(level=level)
 
-        # lock back one level in execution to get calling module name
-        frame = sys._getframe(1)
-        module = frame.f_globals['__name__']
+        # look back one level in execution to get calling module name
+        # noinspection PyProtectedMember
+        __frame = sys._getframe(1)
+        module = __frame.f_globals['__name__']
         if module == '__main__':
             # if name='__main__' then create module name out of filename
-            file_name = frame.f_globals['__file__']
+            file_name = __frame.f_globals['__file__']
             module = os.path.basename(file_name)
 
-        return logging.getLogger(module)
+        self.__my_logger = logging.getLogger(module)
+
+    # -----------------------------------------------------------------------------------------------------
+    def get(self):
+        return self.__my_logger
 
 
 # ---------------------------------------------------------------------------------------------------------
 def main():
     # some Test cases
-    #    my_logger = JrLogger().setup('Test jrLogger', logging.WARNING)
-    my_logger = JrLogger().setup(__name__, logging.WARNING)
+    my_logger = JrLogger(logging.WARNING).get()
     my_logger.debug('Hallo Debug')
     my_logger.info('Hallo Info')
     my_logger.warning('Hallo Warning')

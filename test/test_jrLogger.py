@@ -9,7 +9,7 @@ from jrPyCore.jrLogger import JrLogger
 class TestJrLogger(TestCase):
     # logging based on default log-options
     environ['LOG_CFG'] = ''
-    my_logger = JrLogger().setup(__name__)
+    my_logger = JrLogger().get()
     my_logger.debug('Hallo Debug')
     my_logger.info('Hallo Info')
     my_logger.warning('Hallo Warning')
@@ -19,7 +19,7 @@ class TestJrLogger(TestCase):
 
     # logging based on setup file options
     environ['LOG_CFG'] = '../jrLogger.yml'
-    my_logger = JrLogger().setup(__name__)
+    my_logger = JrLogger().get()
     my_logger.debug('Hallo Debug')
     my_logger.info('Hallo Info')
     my_logger.warning('Hallo Warning')
