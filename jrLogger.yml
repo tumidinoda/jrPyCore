@@ -16,7 +16,7 @@ handlers:
         class: logging.handlers.RotatingFileHandler
 #        level: ERROR
         formatter: simple
-        filename: jrLogger.log
+        filename: /home/robert/jrPyCore/logs/jrLogger.log
         maxBytes: 1920 # 24*80
         backupCount: 5
         encoding: utf8
