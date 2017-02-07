@@ -20,11 +20,10 @@ class JrLogger:
             try:
                 with open(__my_logfile, 'rt') as f:
                     __config = yaml.safe_load(f.read())
-                __log_filename=__config['handlers']['file_handler']['filename']
-                print (__log_filename)
-
                 logging.config.dictConfig(__config)
-            except (IOError,ValueError):
+                __log_filename = __config['handlers']['file_handler']['filename']
+                os.chmod(__log_filename, 0o666)
+            except (IOError, ValueError):
                 logging.basicConfig(level=level)
                 logging.error('Error during jrLogger setup')
         else:
