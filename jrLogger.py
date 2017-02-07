@@ -10,19 +10,22 @@ class JrLogger:
     # -----------------------------------------------------------------------------------------------------
     def __init__(self,
                  level=logging.INFO,
-                 logfile='jrLogger.yml',
+                 conffile='jrLogger.yml',
                  env_key='LOG_CFG'
                  ):
-        __my_logfile = os.getenv(env_key, None)
-        if not __my_logfile:
-            __my_logfile = logfile
-        if os.path.exists(__my_logfile):
+        __my_conffile = os.getenv(env_key, None)
+        if not __my_conffile:
+            __my_conffile = conffile
+        if os.path.exists(__my_conffile):
             try:
-                with open(__my_logfile, 'rt') as f:
+                with open(__my_conffile, 'rt') as f:
                     __config = yaml.safe_load(f.read())
                 logging.config.dictConfig(__config)
                 __log_filename = __config['handlers']['file_handler']['filename']
-                os.chmod(__log_filename, 0o666)
+                try:
+                    os.chmod(__log_filename, 0o666)
+                except OSError:
+                    pass
             except (IOError, ValueError):
                 logging.basicConfig(level=level)
                 logging.error('Error during jrLogger setup')
