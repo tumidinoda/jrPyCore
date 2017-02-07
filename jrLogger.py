@@ -20,6 +20,8 @@ class JrLogger:
             try:
                 with open(__my_logfile, 'rt') as f:
                     __config = yaml.safe_load(f.read())
+                __log_filename=__config['file_handler']
+                print (__log_filename)
                 logging.config.dictConfig(__config)
             except (IOError,ValueError):
                 logging.basicConfig(level=level)
