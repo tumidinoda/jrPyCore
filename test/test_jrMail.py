@@ -7,4 +7,5 @@ try:
     myMail.send('Test', 'JrMail Test von Testmodule')
 except:
     my_logger.exception('Unknown Error')
-    raise
+    raise
+    print('Hallo ')
